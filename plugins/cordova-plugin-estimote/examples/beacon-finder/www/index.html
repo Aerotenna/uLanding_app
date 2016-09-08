@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, user-scalable=no,
+			initial-scale=1, maximum-scale=1, minimum-scale=1" />
+		<link rel="stylesheet" href="css/app.css" />
+		<title>Beacon Finder</title>
+		<script>
+		if (window.hyper) { console.log = hyper.log; }
+		</script>
+	</head>
+	<body>
+
+		<div id="id-screen-home" class="style-screen">
+			<div class="style-heading-big style-color-purple">Beacon Finder</div>
+			<div id="id-screen-home-button-back"
+				class="style-button-back style-color-blueberry">Back</div>
+			<div id="id-screen-home-button-scan-beacons"
+				class="style-button style-color-pink">Scan Beacons</div>
+			<div id="id-screen-home-button-range-beacons"
+				class="style-button style-color-purple">Range Beacons</div>
+			<div id="id-screen-home-button-monitor-regions"
+				class="style-button style-color-pink">Monitor Regions</div>
+			<div id="id-screen-home-button-range-nearables"
+				class="style-button style-color-purple">Range Nearables</div>
+			<div id="id-screen-home-button-monitor-nearables"
+				class="style-button style-color-pink">Monitor Nearables</div>
+			<div id="id-screen-home-button-trigger-nearables"
+				class="style-button style-color-purple">Nearable Trigger</div>
+			<!--
+				This button displays a screen where you can connect
+				to Evothings Workbench and use live coding to develop
+				HTML/JavaScript code with a fast workflow. Just set the
+				style to "display:none" if you don't want it in the app.
+			-->
+			<div id="id-screen-home-button-live-development"
+				class="style-button style-color-ice"
+				style="display:block;">Live Coding</div>
+		</div>
+
+		<div id="id-screen-scan-beacons" class="style-screen">
+			<div class="style-heading-small style-color-purple">Scan Beacons</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+		</div>
+
+		<div id="id-screen-range-beacons" class="style-screen">
+			<div class="style-heading-small style-color-purple">Range Beacons</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+		</div>
+
+		<div id="id-screen-monitor-regions" class="style-screen">
+			<div class="style-heading-small style-color-purple">Monitor Regions</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+		</div>
+
+		<div id="id-screen-range-nearables" class="style-screen">
+			<div class="style-heading-small style-color-purple">Range Nearables</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+		</div>
+
+		<div id="id-screen-monitor-nearables" class="style-screen">
+			<div class="style-heading-small style-color-purple">Monitor Nearables</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+		</div>
+
+		<div id="id-screen-trigger-nearables" class="style-screen">
+			<div class="style-heading-small style-color-purple">Nearable Trigger</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div class="style-item-list"></div>
+			<div class="style-info-text"><p>To try out the trigger example
+			you need an Estimote Sticker. This example uses the Dog Sticker.</p>
+			<p><b>Move the Dog Sticker to activate the trigger.</b></p>
+			<p>You can change the
+			type of Sticker used and the trigger logic in the source code file:
+			js/screen-trigger-nearables.js</p></div>
+		</div>
+
+		<div id="id-screen-live-development" class="style-screen">
+			<div class="style-heading-small style-color-purple">Live Coding</div>
+			<div class="style-button-back style-color-blueberry">Back</div>
+			<div><input id="id-screen-live-development-connect-url" type="url" class="connect-address" /></div>
+			<div id="id-screen-live-development-button-connect"
+				class="style-button style-color-pink">Connect</div>
+			<div class="style-info-text">
+			<p>Use Evothings Workbench to
+			get live reload and develop this app with a fast workflow.</p>
+			<p>(1) Drag www/index.html to the Workbench project list.</p>
+			<p>(2) Enter the Connect URL displayed in the Workbench window
+			in the address field above and tap the Connect button.</p>
+			<p>(3) Click RUN in the Workbench window. You now
+			have live reload enabled, just save the code in your editor and
+			the app reloads.</p>
+			<p>You only need to Connect once to the Workbench. When connected
+			you get automatic reload when you save a code file.</p>
+			<p>Make sure your computer and phone/tablet are on a WiFi network
+			that allows connections (client isolation must be off).</p></div>
+		</div>
+
+		<script src="cordova.js"></script>
+		<script src="js/lib/jquery-2.1.1.min.js"></script>
+		<script src="js/lib/touch.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/screen-scan-beacons.js"></script>
+		<script src="js/screen-range-beacons.js"></script>
+		<script src="js/screen-monitor-regions.js"></script>
+		<script src="js/screen-range-nearables.js"></script>
+		<script src="js/screen-monitor-nearables.js"></script>
+		<script src="js/screen-trigger-nearables.js"></script>
+		<script src="js/screen-live-development.js"></script>
+		<script>
+		// Hide back button if we referrer is empty.
+		var hasReferrer = document.referrer && document.referrer != '';
+		if (!hasReferrer)
+		{
+      		$('#id-screen-home-button-back').hide();
+      	}
+
+		// Setup button handlers.
+		evothings.touch.onTap(
+			$('#id-screen-home-button-back')[0],
+			app.onNavigateBack);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-scan-beacons')[0],
+			app.startScanningBeacons);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-range-beacons')[0],
+			app.startRangingBeacons);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-monitor-regions')[0],
+			app.startMonitoringRegions);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-range-nearables')[0],
+			app.startRangingNearables);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-monitor-nearables')[0],
+			app.startMonitoringNearables);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-trigger-nearables')[0],
+			app.startMonitoringNearableTrigger);
+		evothings.touch.onTap(
+			$('#id-screen-home-button-live-development')[0],
+			app.showLiveDevelopmentScreen);
+
+		// Back buttons on each screen.
+		evothings.touch.onTap(
+			$('#id-screen-scan-beacons div.style-button-back')[0],
+			app.stopScanningBeacons);
+		evothings.touch.onTap(
+			$('#id-screen-range-beacons div.style-button-back')[0],
+			app.stopRangingBeacons);
+		evothings.touch.onTap(
+			$('#id-screen-monitor-regions div.style-button-back')[0],
+			app.stopMonitoringRegions);
+		evothings.touch.onTap(
+			$('#id-screen-range-nearables div.style-button-back')[0],
+			app.stopRangingNearables);
+		evothings.touch.onTap(
+			$('#id-screen-monitor-nearables div.style-button-back')[0],
+			app.stopMonitoringNearables);
+		evothings.touch.onTap(
+			$('#id-screen-trigger-nearables div.style-button-back')[0],
+			app.stopMonitoringNearableTrigger);
+		evothings.touch.onTap(
+			$('#id-screen-live-development div.style-button-back')[0],
+			app.showHomeScreen);
+
+		// Connect button on Live Coding screen.
+		evothings.touch.onTap(
+			$('#id-screen-live-development-button-connect')[0],
+			app.connectToEvothingsWorkbench);
+
+		// Hide buttons on Android.
+		var isAndroid =
+			navigator.userAgent.match(/Android/) ||
+			navigator.userAgent.match(/android/);
+		if (isAndroid)
+		{
+      		$('#id-screen-home-button-scan-beacons').hide();
+      		$('#id-screen-home-button-range-nearables').hide();
+      		$('#id-screen-home-button-monitor-nearables').hide();
+      		$('#id-screen-home-button-trigger-nearables').hide();
+      	}
+		</script>
+
+	</body>
+</html>

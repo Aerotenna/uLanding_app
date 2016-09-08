@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-ble-central": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "com.phonegap.plugins.bluetooth": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-ble": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-estimote": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-bluetooth-serial": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        }
+    },
+    "dependent_plugins": {}
+}

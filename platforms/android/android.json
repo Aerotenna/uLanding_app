@@ -1,0 +1,129 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Bluetooth\"><param name=\"android-package\" value=\"org.apache.cordova.bluetooth.BluetoothPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BLE\"><param name=\"android-package\" value=\"com.evothings.BLE\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"EstimoteBeacons\"><param name=\"android-package\" value=\"com.evothings.EstimoteBeacons\" /></feature>",
+                            "count": 1
+                        }
+                    ],
+                    "/widget": [
+                        {
+                            "xml": "<feature name=\"BLE\"><param name=\"android-package\" value=\"com.megster.cordova.ble.central.BLECentralPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BluetoothSerial\"><param name=\"android-package\" value=\"com.megster.cordova.BluetoothSerial\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+                            "count": 5
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+                            "count": 5
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<service android:exported=\"false\" android:name=\"com.estimote.sdk.service.BeaconService\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-ble-central": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "com.phonegap.plugins.bluetooth": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-ble": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-estimote": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        },
+        "cordova-plugin-bluetooth-serial": {
+            "PACKAGE_NAME": "com.cordova.tracker"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+            "id": "cordova-plugin-whitelist.whitelist",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+            "id": "cordova-plugin-ble-central.ble",
+            "clobbers": [
+                "ble"
+            ]
+        },
+        {
+            "file": "plugins/com.phonegap.plugins.bluetooth/www/bluetooth.js",
+            "id": "com.phonegap.plugins.bluetooth.bluetooth",
+            "clobbers": [
+                "bluetooth"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-ble/ble.js",
+            "id": "cordova-plugin-ble.BLE",
+            "clobbers": [
+                "evothings.ble"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-estimote/plugin/src/js/EstimoteBeacons.js",
+            "id": "cordova-plugin-estimote.EstimoteBeacons",
+            "clobbers": [
+                "estimote"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
+            "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
+            "clobbers": [
+                "window.bluetoothSerial"
+            ]
+        }
+    ]
+}
