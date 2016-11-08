@@ -224,37 +224,11 @@ app.receivedData = function(data)
 
 		if (data[0] === 0xAD)
 		{
-			console.log('Data received: [' +
-				data[0] +', ' + data[1] +', ' + data[2] + ', ' + data[3] + ']');
-			
-			
 			var value = (data[2] << 8) | data[1];
-			//var slope = 0;
-			//var mag = (data[4] << 8) | data[3];
 			
 			console.log(value);
-			//value = value*0.045;
-			//value = value - 0.32;
-			
-			//if (value < 14)
-			//{
-			//	value = value*.0358;	
-			//}
-			//else if (value < 43)
-			//{
-			//	slope = .000386*value + .0304;
-			//	value = value*slope;
-			//}
-			//else if (value < 130)
-			//{
-			//	slope = .0000138*value + .0464;
-			//	value = value*slope;
-			//}
-			//else if (value >= 130)
-			//{
-			//	value = value*.0482;
-			//}
 
+			value = value*0.045; //Confirm this is the coefficient for your specific uLanding.
 			if (value < 0)
 			{
 				value = 0;
